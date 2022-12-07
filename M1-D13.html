@@ -32,6 +32,9 @@ The user should be able to see the list of tasks, add new ones, delete existing 
       border: solid 2px blueviolet;
       font-weight: bold;
       font-size: large;
+      margin: 5px;
+      width: 500px;
+      padding-left: 5px;
     }
     button {
       width: 150px;
@@ -48,7 +51,7 @@ The user should be able to see the list of tasks, add new ones, delete existing 
     ><br /><br />
 
     <input type="text" id="newTask" />
-    <input type="button" value="Add new Task" onclick="addNewTask()" />
+    <input type="button" value="Add new Task" onclick="addNewTask()" id="button" />
 
     <!-- EXERCISE 3
         Create a button "Remove Last Task" to trigger the method "removeLast"
@@ -82,17 +85,19 @@ The user should be able to see the list of tasks, add new ones, delete existing 
                 - Use the document.createElement to create the new List Item
                 - Append the LI child to the UL
             */
+
+
             let list = document.getElementsByTagName("li")
-            let ulElement = document.getElementById("myTaskList");
-
-
-
 
             const addNewTask = function () {
-              let inputTaskButton = document.getElementById("newTask").value;
+              let ulElement = document.getElementById("myTaskList");
+              let inputTaskButton = document.getElementById("newTask");
+              let inputValue = inputTaskButton.value;
               let newLi = document.createElement("li");
-              newLi.innerText = inputTaskButton;
+              newLi.innerText = inputValue;
               ulElement.appendChild(newLi);
+              newLi.classList.add("list-item");
+              inputTaskButton.value = " ";
 
             }
 
@@ -102,7 +107,7 @@ The user should be able to see the list of tasks, add new ones, delete existing 
             */
            const removeLast = function() {
             
-            let last = list[list.length - 1];
+            let last = list[list.length - 1];'['
             last.parentNode.removeChild(last)
            }
            let removeLastButton = document.getElementById("remove-last");
@@ -125,18 +130,13 @@ The user should be able to see the list of tasks, add new ones, delete existing 
             */
 
             const getTasksAsArray = function() {
-              newArr = [];
-              // for (let toPrint of list) {
-              //   newArr += toPrint.innerText;
-              //    console.log(newArr);
-              //   }
-              // }
+              let newArr = [];
               for (let i = 0; i < list.length; i++) {
-                newArr += list[i].innerText;
-                console.log(newArr)
-                
+                newArr.push(list[i].innerText)              
               }
+              console.log(newArr)
             }
+          
           
 
       /* EXERCISE 9:
@@ -174,19 +174,10 @@ The user should be able to see the list of tasks, add new ones, delete existing 
             */
 
             function bubblesort() {
-  for (let i = list.length - 1; i > 0; i--) {
-    for (let j = 0; j < i; j++) {
-      if (list[j] > list[j + 1]) {
-        // SWAP
-        for (let index = 0; index < list.length; index++) {
-          list.innerHTML[index] = [list[j], list[j + 1]] = [list[j + 1], list[j]]
-          
-        }
-       
-      }
-    }
+              	
+  
   }
-}
+    // Print the sorted array
     </script>
   </body>
 </html>
