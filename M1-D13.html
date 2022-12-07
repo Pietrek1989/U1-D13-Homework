@@ -76,6 +76,7 @@ The user should be able to see the list of tasks, add new ones, delete existing 
     <hr/>
 
     <input type="button" value="Sort" onclick="bubblesort()">
+  
 
     <script>
       /* EXERCISE 5: 
@@ -135,6 +136,7 @@ The user should be able to see the list of tasks, add new ones, delete existing 
                 newArr.push(list[i].innerText)              
               }
               console.log(newArr)
+             return (newArr)
             }
           
           
@@ -174,10 +176,22 @@ The user should be able to see the list of tasks, add new ones, delete existing 
             */
 
             function bubblesort() {
-              	
-  
-  }
-    // Print the sorted array
+              newArr = getTasksAsArray();
+              for(let i = 0; i <= newArr.length-1; i++){
+              for(let j = 0; j < ( newArr.length - i -1); j++){
+                if(newArr[j] > newArr[j+1]){
+                   let temp = newArr[j]
+                   newArr[j] = newArr[j + 1]
+                   newArr[j+1] = temp
+                 }
+            
+              }
+            }
+            for (let index = 0; index < newArr.length; index++) {
+               document.getElementsByTagName("li")[index].innerHTML = newArr[index];
+      
+                }
+            }
     </script>
   </body>
 </html>
